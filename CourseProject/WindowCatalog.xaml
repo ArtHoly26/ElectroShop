@@ -1,0 +1,76 @@
+﻿<Window x:Class="CourseProject.WindowCatalog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseProject"
+        mc:Ignorable="d"
+        Background="#1f3282"
+        Title="WindowCatalog" Height="750" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local:CatalogViewModel/>
+    </Window.DataContext>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="10" ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" ></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="10" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="1" 
+         Style="{StaticResource TextBlockStyle2}" 
+         HorizontalAlignment="Left" 
+         TextWrapping="Wrap"  
+         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="250" Grid.Row="1" Margin="268,10,0,0">
+         <Run Text="Catalog"/>
+         <Run Text="{Binding User.Login}"/>
+        </TextBlock>
+
+        <ComboBox 
+        ItemsSource="{Binding Categories}" 
+        DisplayMemberPath="Name"
+        SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+        SelectionChanged="CategorySelectionChanged"
+        Margin="281,78,274,119" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="10,119,10,119" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1">
+            <DataGrid 
+            ItemsSource="{Binding Products}" 
+            AutoGenerateColumns="False" Height="476" Width="791">
+                <DataGrid.Columns>
+
+                    <DataGridTemplateColumn Header="Image" Width="220">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding ImagePath}" 
+                                   Width="210" 
+                                   Height="130" 
+                                   Stretch="UniformToFill"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="120"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="*"/>
+                    <DataGridTextColumn Header="Weight" Binding="{Binding Weight}" Width="50"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="300"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
+        <Button Style="{StaticResource ButtonStyle1}"
+        Content="Exit" Grid.Row="3" Grid.Column="1" 
+        Margin="10,152,0,0" HorizontalAlignment="Left" Click="Button_Click_Exit"/>
+
+    </Grid>
+</Window>
