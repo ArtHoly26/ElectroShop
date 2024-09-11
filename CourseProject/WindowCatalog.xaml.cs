@@ -1,27 +1,94 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CourseProject
 {
-    
     public partial class WindowCatalog : Window
     {
-        private UserViewModel userViewModel;
-        public WindowCatalog()
+        private CatalogViewModel _catalogViewModel;
+        
+        public WindowCatalog(UserViewModel userViewModel)
         {
             InitializeComponent();
+            _catalogViewModel = new CatalogViewModel(userViewModel);
+            DataContext = _catalogViewModel;
         }
+
+        private void AddToFavorites_Click(object sender, RoutedEventArgs e)
+        {
+            DataGrid dataGrid = ProductDataGrid;
+
+            if (dataGrid.SelectedItem is Product selectedProduct)
+            {
+                
+                if (_catalogViewModel.UserViewModel != null)
+                {
+                    AddProductToFavoritesAsync(selectedProduct, _catalogViewModel.UserViewModel.CurrentUserId);
+                }
+                else
+                {
+                    MessageBox.Show("UserViewModel is not set.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product first.");
+            }
+        }
+
+        private async Task<bool> AddProductToFavoritesAsync(Product product, int userId)
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    string checkQuery = @"SELECT COUNT(*) FROM Favorites WHERE ProductsId = @ProductsId AND UsersId = @UsersId";
+
+                    using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+                    {
+                        checkCommand.Parameters.AddWithValue("@ProductsId", product.Id);
+                        checkCommand.Parameters.AddWithValue("@UsersId", userId);
+
+                        int exists = (int)await checkCommand.ExecuteScalarAsync();
+
+                        if (exists > 0)
+                        {
+                            MessageBox.Show("Этот продукт уже находится в избранном.");
+                            return false; 
+                        }
+                    }
+
+                    string insertQuery = @"INSERT INTO Favorites (ProductsId, UsersId) VALUES (@ProductsId, @UsersId)";
+
+                    using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@ProductsId", product.Id);
+                        insertCommand.Parameters.AddWithValue("@UsersId", userId);
+
+                        int rowsAffected = await insertCommand.ExecuteNonQueryAsync();
+
+                        return rowsAffected > 0; 
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show($"Ошибка SQL при добавлении продукта в избранное: {sqlEx.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при добавлении продукта в избранное: {ex.Message}");
+                return false;
+            }
+        }
+
         private void CategorySelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DataContext is CatalogViewModel viewModel)
@@ -32,10 +99,11 @@ namespace CourseProject
 
         private void Button_Click_Exit(object sender, RoutedEventArgs e)
         {
-
-            WindowMainMenu windowMainMenu = new WindowMainMenu(userViewModel);
+            WindowMainMenu windowMainMenu = new WindowMainMenu(_catalogViewModel.UserViewModel);
             windowMainMenu.Show();
-            this.Close();
+            this.Close();   
         }
+
+        
     }
 }

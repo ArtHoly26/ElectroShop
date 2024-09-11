@@ -1,29 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CourseProject
 {
-    public class CatalogViewModel
+    public class CatalogViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Category> Categories { get; set; } 
-        public ObservableCollection<Product> Products { get; set; }
-        public Category SelectedCategory { get; set; } 
-        public CatalogViewModel()
+        public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
+        public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
+        public Category SelectedCategory { get; set; }
+        public Product SelectedProduct { get; set; }
+        public UserViewModel UserViewModel { get; }
+
+        public CatalogViewModel(UserViewModel userViewModel)
         {
-            Categories = new ObservableCollection<Category>();
-            Products = new ObservableCollection<Product>();
+            UserViewModel = userViewModel ?? throw new ArgumentNullException(nameof(userViewModel));
             LoadCategories();
         }
+
         private void LoadCategories()
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -41,6 +47,7 @@ namespace CourseProject
                 }
             }
         }
+
         public void LoadProducts()
         {
             if (SelectedCategory == null) return;
@@ -71,5 +78,12 @@ namespace CourseProject
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 }
+

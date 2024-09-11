@@ -4,7 +4,6 @@ using System.Windows.Input;
 
 namespace CourseProject
 {
-    
     public partial class WindowMainMenu : Window
     {
         private UserViewModel userViewModel;
@@ -28,8 +27,14 @@ namespace CourseProject
         }
         private void Button_Click_Catalog(object sender, RoutedEventArgs e)
         {
-            WindowCatalog windowCatalog = new WindowCatalog();
+            WindowCatalog windowCatalog = new WindowCatalog(userViewModel);
             windowCatalog.Show();
+            this.Close();
+        }
+        private void Button_Click_Selected(object sender, RoutedEventArgs e)
+        {
+            WindowSelected windowSelected = new WindowSelected(userViewModel);
+            windowSelected.Show();
             this.Close();
         }
     }
