@@ -1,15 +1,46 @@
-![Снимок экрана 2024-09-13 223724](https://github.com/user-attachments/assets/90645c77-ea3f-4d0f-99fb-1618a3812815)
-![Снимок экрана 2024-09-13 223643](https://github.com/user-attachments/assets/7be7992b-ae22-4050-bd94-b6e12a8e0acb)
-![Снимок экрана 2024-09-13 224513](https://github.com/user-attachments/assets/6d62d8fa-6852-4341-9fb4-4577c9ca4125)
-![Снимок экрана 2024-09-13 224441](https://github.com/user-attachments/assets/113a517b-217e-434d-ba4e-ed419e680f7d)
-![Снимок экрана 2024-09-13 224410](https://github.com/user-attachments/assets/d84d922e-29c3-4bc9-8d83-edbf419051a2)
-![Снимок экрана 2024-09-13 224326](https://github.com/user-attachments/assets/24481dbc-11f3-4567-aae4-5aca7ffe4297)
-![Снимок экрана 2024-09-13 224236](https://github.com/user-attachments/assets/111f401e-8fd1-4454-a6d1-f841e581d6ee)
-![Снимок экрана 2024-09-13 224219](https://github.com/user-attachments/assets/41fc2b4f-004b-4d5c-a7a0-5c4fc586acd4)
-![Снимок экрана 2024-09-13 224144](https://github.com/user-attachments/assets/5fd80b99-5449-4bdc-87f6-b076927731e1)
-![Снимок экрана 2024-09-13 224124](https://github.com/user-attachments/assets/ff7572cf-3f6f-4043-965c-8e174edb3de3)
-![Снимок экрана 2024-09-13 224059](https://github.com/user-attachments/assets/e296305a-371e-467e-ab7e-54a5b206bf0a)
-![Снимок экрана 2024-09-13 224032](https://github.com/user-attachments/assets/9bfcb215-1a1b-4c52-9fb4-f3f17998499f)
-![Снимок экрана 2024-09-13 224000](https://github.com/user-attachments/assets/0d91e2e8-20bf-43e4-a75e-3cf0ddc8ba89)
-![Снимок экрана 2024-09-13 223939](https://github.com/user-attachments/assets/4cf99d4d-a31f-4775-8c77-0b97a75246cd)
-![Снимок экрана 2024-09-13 223839](https://github.com/user-attachments/assets/2c27cae0-5120-4029-b4fb-726b54a96f65)
+![Снимок экрана 2024-09-13 223643](https://github.com/user-attachments/assets/1eba32d7-ffd9-457e-990e-2f9dfd066451)
+Разработано окно аутентификации пользователя. Для входа необходимо пройти регистрацию новому пользователю нажав кнопку Registration.
+![Снимок экрана 2024-09-13 223724](https://github.com/user-attachments/assets/ccc1687a-c3bf-4869-8570-66ff33570a87)
+Разработано окно авторизации пользователя с валидацией данных. Для регистрации нового пользователя необходимо нажать кнопку Registration.
+![Снимок экрана 2024-09-13 223839](https://github.com/user-attachments/assets/c886673a-cdcb-4700-81e1-5d6747b239f4)
+Для входа необходимо ввести Login и Password пользователя.
+![Снимок экрана 2024-09-13 223939](https://github.com/user-attachments/assets/e3e9fc8e-5748-4408-975e-a8420f9a1c65)
+Если данные введены не верно. Система оповестит пользователя об ошибке.
+![Снимок экрана 2024-09-13 223939](https://github.com/user-attachments/assets/89599fca-8c37-4c6d-9875-9349289480d1)
+При входе пользователь попадает в следующее разработанное окно MainMenu. На данны момент разработки сделанны три вкладки. Account, Catalog, Selected. И кнопка Log out.
+![Снимок экрана 2024-09-13 224000](https://github.com!
+/user-attachments/assets/a4685df0-27ac-463b-863b-917915c6ca52)
+Во вкладке Account находится разработанное окно WindowAcccount, в нем находятся все данные о пользователе и возможность их изменять.
+![Снимок экрана 2024-09-13 224513](https://github.com/user-attachments/assets/e6af0372-f77b-4439-98c8-b0d1b5ce03a1)
+Во вкладке Catalog разработанно окно WindowCatalog, в котором есть возможность выбрать категорию товара , ознакомиться с каждым товаром и добавить его в избранное.
+![Снимок экрана 2024-09-13 224059](https://github.com/user-attachments/assets/e82471e2-b065-4827-86ec-ab883150cbdb)
+![Снимок экрана 2024-09-13 224124](https://github.com/user-attachments/assets/f773f3ab-981d-40b0-bd7c-ebdc62585460)
+![Снимок экрана 2024-09-13 224144](https://github.com/user-attachments/assets/1d1e1758-252b-4d1c-8240-df66f9decfeb)
+![Снимок экрана 2024-09-13 224219](https://github.com/user-attachments/assets/394c4f97-3fcd-4592-8467-b5af644f565c)
+![Снимок экрана 2024-09-13 224236](https://github.com/user-attachments/assets/d3f28cce-d0de-4d2e-a8c8-c212b70d599b)
+![Снимок экрана 2024-09-13 224326](https://github.com/user-attachments/assets/7f211c15-5726-4ae4-af35-b83705042753)
+Во вкладке Selected разработанно окно WindowSelected, в котором находится избранный товар из каталога. Разработанна возможность удалять товар из избранного.
+![Снимок экрана 2024-09-13 224410](https://github.com/user-attachments/assets/5d6d6a9c-e49c-4449-ab27-c08df94a144b)
+![Снимок экрана 2024-09-13 224441](https://github.com/user-attachments/assets/85839fdc-b91a-456d-9748-881afb97cff9)
+
+При разработке использовался локальная база данных MSSQL и ADO.NET — это библиотека классов, при помощи которых можно устанавливать подключение к базе данных и выполнять запросы. В будущем планирется перенести все данные на удаленную БД.
+
+Создание базы данных ElectroShop.
+![Снимок экрана 2024-09-13 231109](https://github.com/user-attachments/assets/2a570905-e134-4c4d-ac4c-352705bd228f)
+Таблица со всеми данными пользователя.
+![Снимок экрана 2024-09-13 231125](https://github.com/user-attachments/assets/2390e395-0e4d-4f88-85fe-d39337ebb876)
+Таблица со всеми категориями товартов.
+![Снимок экрана 2024-09-13 231229](https://github.com/user-attachments/assets/9eaeaeb5-8f15-40a5-ae5d-8381a1251ff4)
+Таблица со всеми продуктами.
+![Снимок экрана 2024-09-13 231152](https://github.com/user-attachments/assets/09531fd4-a31f-4046-8505-caade0602aad)
+Таблица со всеми избранными товарами.
+![Снимок экрана 2024-09-13 231211](https://github.com/user-attachments/assets/4b1c9525-7f23-4420-8df2-d06ec86e9104)
+
+В будущем:
+- планируется разделение по ролям пользователей. Например: Администратор, Менеджер магазина, Клиент;
+- сортировки по товарам;
+- поиск;
+- корзина покупок;
+- отправка сообщения на почту;
+- настройка приложения (внешний вид, язык и другой функционал).
+- сравнение товаров.
