@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace CourseProject
                 }
             }
         }
+
+        [Required(ErrorMessage = "Enter a fitstname!")]
         public string FirstName
         {
             get { return _firstname; }
@@ -43,6 +46,8 @@ namespace CourseProject
                 }
             }
         }
+
+        [Required(ErrorMessage = "Enter a lastname!")]
         public string LastName
         {
             get { return _lastname; }
@@ -55,6 +60,9 @@ namespace CourseProject
                 }
             }
         }
+
+        [Required(ErrorMessage = "Enter email!")]
+        [EmailAddress]
         public string Email
         {
             get { return _email; }
@@ -67,6 +75,9 @@ namespace CourseProject
                 }
             }
         }
+
+        [Required(ErrorMessage = "Enter login!")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Login 3-20 symbol!")]
         public string Login
         {
             get { return _login; }
@@ -79,6 +90,9 @@ namespace CourseProject
                 }
             }
         }
+
+        [Required(ErrorMessage = "Enter password!")]
+        [StringLength(16, MinimumLength = 4, ErrorMessage = "Password 4-16 symbol!")]
         public string Password
         {
             get { return _password; }
@@ -114,6 +128,8 @@ namespace CourseProject
                 return age;
             }
         }
+
+        [Required(ErrorMessage = "Enter a country!")]
         public string Country
         {
             get { return _country; }

@@ -42,7 +42,7 @@ namespace CourseProject
             string newLastName = userLastName.Text;
             string newEmail = userEmail.Text;
             string newCountry = userCountry.Text;
-            DateTime newDateOfBirth = userViewModel.User.DateOfBirth; // Используем старую дату по умолчанию
+            DateTime newDateOfBirth = userViewModel.User.DateOfBirth; 
             string newLogin = userLogin.Text;
 
             if (datePicker.SelectedDate.HasValue)
@@ -65,7 +65,7 @@ namespace CourseProject
                 }
             }
 
-            // Дополнительно проверяем на допустимый диапазон
+            
             if (newDateOfBirth < SqlDateTime.MinValue.Value || newDateOfBirth > SqlDateTime.MaxValue.Value)
             {
                 MessageBox.Show("Дата рождения должна быть в диапазоне от 1/1/1753 до 12/31/9999.");
@@ -93,12 +93,12 @@ namespace CourseProject
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            errorChangeData.Text = "Данные успешно изменены";
+                            errorChangeData.Text = "The data has been successfully changed";
                             errorChangeData.Foreground = Brushes.GreenYellow;
                         }
                         else
                         {
-                            errorChangeData.Text = "Ошибка изменения данных";
+                            errorChangeData.Text = "Data modification error";
                             errorChangeData.Foreground = Brushes.Red;
                         }
                     }

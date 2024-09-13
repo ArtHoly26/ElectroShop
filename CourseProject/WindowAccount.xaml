@@ -26,15 +26,13 @@
 
         <TextBlock Grid.Column="1" 
          Style="{StaticResource TextBlockStyle2}" 
-         HorizontalAlignment="Left" 
+         HorizontalAlignment="Center" 
          TextWrapping="Wrap"  
-         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="497" Grid.Row="1" Margin="166,10,0,0">
-         <Run Text="Account"/>
-         <Run Text="{Binding User.Login}"/>
-        </TextBlock>
+         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="236" Grid.Row="1" Margin="0,21,0,0"
+         Text="Account"/>
 
         <Image Source="/CourseProject;component/Icon/icon7.ico" 
-         Margin="53,10,233,168" 
+         Margin="110,10,170,149" 
          Grid.Row="1" Grid.Column="1" />
 
         <TextBlock Grid.Column="1" 

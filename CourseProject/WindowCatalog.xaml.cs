@@ -2,13 +2,13 @@
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace CourseProject
 {
     public partial class WindowCatalog : Window
     {
         private CatalogViewModel _catalogViewModel;
-        
         public WindowCatalog(UserViewModel userViewModel)
         {
             InitializeComponent();
@@ -29,15 +29,16 @@ namespace CourseProject
                 }
                 else
                 {
-                    MessageBox.Show("UserViewModel is not set.");
+                    errors.Text = "UserViewModel is not set.";
+                    errors.Foreground = Brushes.Red;
                 }
             }
             else
             {
-                MessageBox.Show("Please select a product first.");
+                errors.Text = "Please select a product first.";
+                errors.Foreground = Brushes.Red;
             }
         }
-
         private async Task<bool> AddProductToFavoritesAsync(Product product, int userId)
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -59,7 +60,8 @@ namespace CourseProject
 
                         if (exists > 0)
                         {
-                            MessageBox.Show("Этот продукт уже находится в избранном.");
+                            errors.Text = "His product is already in favorites..";
+                            errors.Foreground = Brushes.Red;
                             return false; 
                         }
                     }
@@ -72,23 +74,26 @@ namespace CourseProject
                         insertCommand.Parameters.AddWithValue("@UsersId", userId);
 
                         int rowsAffected = await insertCommand.ExecuteNonQueryAsync();
-
+                        errors.Text = "The product has been added to favorites";
+                        errors.Foreground = Brushes.GreenYellow;
                         return rowsAffected > 0; 
                     }
                 }
             }
+
             catch (SqlException sqlEx)
             {
-                MessageBox.Show($"Ошибка SQL при добавлении продукта в избранное: {sqlEx.Message}");
+                errors.Text = "SQL error when adding a product to favorites";
+                errors.Foreground = Brushes.Red;
                 return false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при добавлении продукта в избранное: {ex.Message}");
+                errors.Text = "Error when adding a product to favorites";
+                errors.Foreground = Brushes.Red;
                 return false;
             }
         }
-
         private void CategorySelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DataContext is CatalogViewModel viewModel)
@@ -96,14 +101,12 @@ namespace CourseProject
                 viewModel.LoadProducts();
             }
         }
-
         private void Button_Click_Exit(object sender, RoutedEventArgs e)
         {
             WindowMainMenu windowMainMenu = new WindowMainMenu(_catalogViewModel.UserViewModel);
             windowMainMenu.Show();
             this.Close();   
         }
-
-        
+  
     }
 }

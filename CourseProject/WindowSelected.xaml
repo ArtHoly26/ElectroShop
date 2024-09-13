@@ -26,16 +26,16 @@
 
         <TextBlock Grid.Column="1" 
          Style="{StaticResource TextBlockStyle2}" 
-         HorizontalAlignment="Center" 
+         HorizontalAlignment="Left" 
          TextWrapping="Wrap"  
-         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="250" Margin="0,5,0,0" Grid.RowSpan="2">
+         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="250" Margin="281,8,0,0" Grid.Row="1">
          <Run Text="Selected"/>
          <Run Text="{Binding User.Login}"/>
         </TextBlock>
 
         <ScrollViewer 
     Grid.Row="1" 
-    Margin="25,101,10,93" 
+    Margin="0,94,10,101" 
     VerticalScrollBarVisibility="Auto" 
     HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1">
 
@@ -43,10 +43,11 @@
      x:Name="ProductDataGrid" 
      ItemsSource="{Binding Favorites}" 
      AutoGenerateColumns="False" 
-     Height="520" 
-     Width="747" 
+     Height="519" 
+     Width="785" 
      ColumnHeaderHeight="40" 
-     RowHeight="150">
+     RowHeight="150"
+     SelectionChanged="ProductDataGrid_SelectionChanged">
 
 
                 <DataGrid.Columns>
@@ -58,7 +59,7 @@
                             Width="220" 
                             Height="140" 
                             Margin="5" 
-                            Stretch="UniformToFill"/>
+                            Stretch="Uniform"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -91,7 +92,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
 
-                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="180">
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="150">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="FontSize" Value="14"/>
@@ -105,11 +106,28 @@
         </ScrollViewer>
 
         <Button Style="{StaticResource ButtonStyle1}"
+         Content="Delete item" 
+         Grid.Row="3" Grid.Column="2" 
+         Margin="150,172,0,0" 
+         HorizontalAlignment="Left" 
+         Click="Button_Click_Delete"/>
+
+        <Button Style="{StaticResource ButtonStyle1}"
         Content="Exit" 
         Grid.Row="3" Grid.Column="1" 
-        Margin="25,172,0,0" 
+        Margin="10,172,0,0" 
         HorizontalAlignment="Left" 
         Click="Button_Click_Exit"/>
-        
+
+        <TextBlock Grid.Column="1"
+         x:Name="errors"
+         Style="{StaticResource TextBlockStyle1}" 
+         HorizontalAlignment="Center" 
+         TextWrapping="Wrap"  
+         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="760" Margin="0,142,0,0" Grid.Row="3"/>
+
+        <Image Source="/CourseProject;component/Icon/icon16.ico" 
+         Margin="109,0,167,157" Grid.Column="1" Grid.Row="1" />
+
     </Grid>
 </Window>

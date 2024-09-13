@@ -25,10 +25,13 @@ namespace CourseProject
             }
         }
         public int CurrentUserId { get; set; }
-        
+
+        public UserViewModel()
+        {
+            User = new User(); 
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

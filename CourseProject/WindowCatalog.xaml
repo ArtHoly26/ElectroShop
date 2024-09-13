@@ -40,11 +40,11 @@
             SelectionChanged="CategorySelectionChanged"
             HorizontalAlignment="Center"
             Width="266"
-            Margin="0,57,0,142" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+            Margin="0,49,0,150" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
 
         <ScrollViewer 
             Grid.Row="1" 
-            Margin="25,101,10,93" 
+            Margin="0,97,10,119" 
             VerticalScrollBarVisibility="Auto" 
             HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1">
 
@@ -52,11 +52,10 @@
              x:Name="ProductDataGrid" 
              ItemsSource="{Binding Products}" 
              AutoGenerateColumns="False" 
-             Height="520" 
-             Width="747" 
+             Height="498" 
+             Width="786" 
              ColumnHeaderHeight="40" 
              RowHeight="150">
-
 
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Image" Width="250">
@@ -67,7 +66,7 @@
                                     Width="220" 
                                     Height="140" 
                                     Margin="5" 
-                                    Stretch="UniformToFill"/>
+                                    Stretch="Uniform"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -100,7 +99,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
 
-                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="180">
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="150">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="FontSize" Value="14"/>
@@ -127,6 +126,18 @@
                 Margin="0,172,0,0" 
                 Grid.Column="1" 
                 Grid.Row="3"/>
+
+        <Image Source="/CourseProject;component/Icon/icon14.ico" 
+         Margin="84,1,194,141" 
+         Grid.Row="1" Grid.Column="1" />
+
+        <TextBlock Grid.Column="1"
+         x:Name="errors"
+         Style="{StaticResource TextBlockStyle1}" 
+         HorizontalAlignment="Center" 
+         TextWrapping="Wrap"  
+         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="704" Margin="0,140,0,0" Grid.Row="3" Height="32"/>
+
 
     </Grid>
 </Window>

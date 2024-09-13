@@ -29,14 +29,14 @@
          Style="{StaticResource TextBlockStyle2}" 
          HorizontalAlignment="Left" 
          TextWrapping="Wrap"  
-         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="497" Grid.Row="1" Margin="28,8,0,0">
+         VerticalAlignment="Top" Grid.ColumnSpan="2" Width="557" Grid.Row="1" Margin="28,8,0,0">
          <Run Text="Electro Shop"/>
          <Run Text="Welcom"/>
          <Run Text="{Binding User.Login}"/>
         </TextBlock>
 
         <Image Source="/CourseProject;component/Icon/icon6.ico" 
-         Margin="94,1,8,98" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" />
+         Margin="126,0,-24,99" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" />
 
         <Button Style="{StaticResource ButtonStyle3}" 
          Cursor="Hand" Grid.Column="1" 

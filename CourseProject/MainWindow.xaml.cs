@@ -53,7 +53,7 @@ namespace CourseProject
                         }
                     }
 
-                    // Проверка пароля
+          
                     if (userId != -1 && hashedPasswordFromDatabase != null)
                     {
                         string hashedPasswordToCheck;
